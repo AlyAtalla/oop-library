@@ -1,5 +1,5 @@
-require './corrector'
-require_relative './rental'
+require_relative 'corrector'
+require_relative 'rental'
 
 class Person
   attr_accessor :name, :age
@@ -14,12 +14,12 @@ class Person
     @rentals = []
   end
 
-  def is_of_age?
-    @age >= 18
+  def of_age?
+    age >= 18
   end
 
   def can_use_services?
-    is_of_age? || @parent_permission
+    of_age? || @parent_permission
   end
 
   def validate_name(name)
