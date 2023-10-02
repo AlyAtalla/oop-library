@@ -55,6 +55,20 @@ Describe between 1-3 key features of the application.
 - You can run the code on IRB;
 - You can also run the code using code runner on vs code ctrl + alt + n
 
+### Future Features
+
+We have exciting plans for the future development of this project. Here are some of the features and improvements we're considering:
+
+#### . Set Up Class Associations
+
+   - Description: Implement class associations to define relationships between key classes in the project.
+   - Expected Impact: Associations will enhance data organization and make it easier to manage relationships between objects.
+   - Status: [Not Started / In Progress / Completed]
+   - Issue or Pull Request: [Link to the related GitHub issue or pull request, if available]
+
+
+
+
 ## Authors
 
 👤 **Aly Atalla**
