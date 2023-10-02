@@ -43,7 +43,6 @@ puts result
 
 
 ## Key Features 
-Describe between 1-3 key features of the application.
 
 [Ad-clas-person]
 [add-class_teacher]
@@ -86,7 +85,7 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](.\LICENSE) licensed.
 
 🙏 Acknowledgments 
 

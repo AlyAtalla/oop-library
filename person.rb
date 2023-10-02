@@ -8,14 +8,14 @@ class Person
   def initialize(age:, name: 'Unknown', parent_permission: true)
     @id = Random.rand(1..1000)
     @corrector = Corrector.new
-    @name = validate_name(name)
+    @name = name
     @age = age
     @parent_permission = parent_permission
     @rentals = []
   end
 
   def of_age?
-    age >= 18
+    @age >= 18
   end
 
   def can_use_services?
