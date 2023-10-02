@@ -1,2 +1,92 @@
-# oop-library
-School library App
+# OOP school library
+
+> In this project, I will start building my school library app. I'm practicing design patterns for building OOP applications.
+## Built With
+
+- Ruby
+
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+- Git/GitHub;
+- Optional ( IDE installed in your machine ) - recommended IDE: Vscode;
+- Ruby Installed in your machine;
+
+### Setup
+
+- To clone this repo:
+  - Open the Terminal(Mac/Linux) or the Cmd (Windows);
+  - Navigate to where you want to paste the Repo folder;
+
+## install 
+
+
+To install and run this project on your local machine, follow these steps:
+
+1. Clone the repository to your local machine using Git:
+
+   ```shell
+   git clone https://github.com/AlyAtalla/oop-library.git
+
+
+## usage 
+
+# Example Ruby code or usage:
+
+# Usage example:
+your_instance = YourClass.new
+result = your_instance.some_method
+puts result
+
+
+## Key Features 
+
+[Ad-clas-person]
+[add-class_teacher]
+[Add-class-student]
+  
+### Run tests
+
+- ruboto
+- You can run the code on IRB;
+- You can also run the code using code runner on vs code ctrl + alt + n
+
+### Future Features
+
+We have exciting plans for the future development of this project. Here are some of the features and improvements we're considering:
+
+#### . Set Up Class Associations
+
+   - Description: Implement class associations to define relationships between key classes in the project.
+   - Expected Impact: Associations will enhance data organization and make it easier to manage relationships between objects.
+   - Status: [Not Started / In Progress / Completed]
+   - Issue or Pull Request: [Link to the related GitHub issue or pull request, if available]
+
+
+
+
+## Authors
+
+👤 **Aly Atalla**
+
+- GitHub: [@iwillteixeira](https://github.com/AlyAtalla)
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/AlyAtalla/oop-library/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## 📝 License
+
+This project is [MIT](.\LICENSE) licensed.
+
+🙏 Acknowledgments 
+
+I would like to thank Microverse for providing a beautiful and encouraging learning environment.
