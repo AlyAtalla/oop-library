@@ -1,13 +1,6 @@
-require './nameable'
-
-# Create base Decorator
-class Decorator < Nameable
-  def initialize(nameable)
-    super()
-    @nameable = nameable
-  end
-
+# Create class Nameable
+class Nameable
   def correct_name
-    @nameable.correct_name
+    raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
   end
 end
