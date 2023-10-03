@@ -1,92 +1,110 @@
-# OOP school library
+# oop-libray
 
-> In this project, I will start building my school library app. I'm practicing design patterns for building OOP applications.
-## Built With
+# 📗 Table of Contents
+- [📖 About the Project](#about-project)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+- [💻 Getting Started](#getting-started)
+- [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
+- [🤝 Contributing](#contributing)
+- [⭐️ Show your support](#support)
+- [🙏 Acknowledgements](#acknowledgements)
+- [📝 License](#license)
+<!-- PROJECT DESCRIPTION -->
 
-- Ruby
+# 📖 [oop library] <a name="about-project"></a>
 
-## Getting Started
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-- Git/GitHub;
-- Optional ( IDE installed in your machine ) - recommended IDE: Vscode;
-- Ruby Installed in your machine;
-
-### Setup
-
-- To clone this repo:
-  - Open the Terminal(Mac/Linux) or the Cmd (Windows);
-  - Navigate to where you want to paste the Repo folder;
-
-## install 
-
-
-To install and run this project on your local machine, follow these steps:
-
-1. Clone the repository to your local machine using Git:
-
-   ```shell
-   git clone https://github.com/AlyAtalla/oop-library.git
-
-
-## usage 
-
-# Example Ruby code or usage:
-
-# Usage example:
-your_instance = YourClass.new
-result = your_instance.some_method
-puts result
-
-
-## Key Features 
-
-[Ad-clas-person]
-[add-class_teacher]
-[Add-class-student]
-  
-### Run tests
-
-- ruboto
-- You can run the code on IRB;
-- You can also run the code using code runner on vs code ctrl + alt + n
-
-### Future Features
-
-We have exciting plans for the future development of this project. Here are some of the features and improvements we're considering:
-
-#### . Set Up Class Associations
-
-   - Description: Implement class associations to define relationships between key classes in the project.
-   - Expected Impact: Associations will enhance data organization and make it easier to manage relationships between objects.
-   - Status: [Not Started / In Progress / Completed]
-   - Issue or Pull Request: [Link to the related GitHub issue or pull request, if available]
+**[oop library]** is an open school library where students can rent books for assignments.
 
 
 
+<a name="readme-top"></a>
 
-## Authors
 
-👤 **Aly Atalla**
+### Tech Stack <a name="tech-stack"></a>
 
-- GitHub: [@iwillteixeira](https://github.com/AlyAtalla)
-## 🤝 Contributing
+<details>
+  <summary>Server</summary>
+  <ul>
+    <li><a href="https://rubygems.org">Ruby</a></li>
+  </ul>
+</details>
+
+### Key Features <a name="key-features"></a>
+
+- **[Create multiple classes]**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 💻 Getting Started <a name="getting-started"></a>
+
+To get a local copy up and running, follow these steps.
+
+Clone this repository to your desired folder:
+
+git clone https://github.com/AlyAtalla/oop-library.git
+
+- To trace all linter errors, run
+  ...
+
+  rubocop -A
+  ...
+
+<!-- AUTHORS -->
+
+## 👥 Authors <a name="authors"></a>
+
+
+👤 **ALY ATALLA**
+
+- GitHub: [@githubhandle](https://github.com/AlyAtalla)
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- FUTURE FEATURES-->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+
+- [ ] Add more arguments for variety of test cases
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
+
+## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](https://github.com/AlyAtalla/oop-library/issues).
 
-## Show your support
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Give a ⭐️ if you like this project!
+<!-- SUPPORT -->
 
-## 📝 License
+## ⭐️ Show your support <a name="support"></a>
 
-This project is [MIT](.\LICENSE) licensed.
+If you like this project, give it a star.
 
-🙏 Acknowledgments 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-I would like to thank Microverse for providing a beautiful and encouraging learning environment.
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+I would like to thank microverse for this project
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./LICENSE) licensed.
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
