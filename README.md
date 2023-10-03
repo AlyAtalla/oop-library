@@ -1,6 +1,4 @@
-# Enumerable-project
-
-## Getting Started
+# oop-libray
 
 # 📗 Table of Contents
 
