@@ -7,6 +7,10 @@
 - [💻 Getting Started](#getting-started)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
+- [🤝 Contributing](#contributing)
+- [⭐️ Show your support](#support)
+- [🙏 Acknowledgements](#acknowledgements)
+- [📝 License](#license)
 <!-- PROJECT DESCRIPTION -->
 
 # 📖 [oop library] <a name="about-project"></a>
