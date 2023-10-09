@@ -60,6 +60,11 @@ git clone https://github.com/AlyAtalla/oop-library.git
 
 - GitHub: [@githubhandle](https://github.com/AlyAtalla)
 
+ **Fatima Najafi**
+
+- GitHub: [@fatima-najafi](https://github.com/fatima-najafi)
+- Twitter: [@fatima-najafi](https://twitter.com/FatimaNajafi6)
+- LinkedIn: [@fatima-najafi](https://www.linkedin.com/in/fatima-najafi/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
