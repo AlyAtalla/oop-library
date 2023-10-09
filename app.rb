@@ -4,7 +4,6 @@ require './student'
 require './classroom'
 require './rental'
 require './teacher'
-
 class App
   def initialize
     @books = []
@@ -13,7 +12,6 @@ class App
     @people = []
     @rentals = []
   end
-
   # list of books
   def list_books
     if @books.empty?
@@ -25,7 +23,6 @@ class App
     end
     nil
   end
-
   # list of people method
   def list_people
     print 'Do you want to Create a list of a students (1) or a teachers (2)? [Input the number]: '
@@ -39,7 +36,6 @@ class App
       puts "\nInvalid input!!\n\n"
     end
   end
-
   def list_student
     if @students.empty?
       puts 'No students found.'
@@ -51,7 +47,6 @@ class App
     end
     nil
   end
-
   def list_teacher
     if @teachers.empty?
       puts 'No teachers found.'
@@ -63,7 +58,6 @@ class App
     end
     nil
   end
-
   # Create a person method
   def create_person
     print 'Do you want to Create a student (1) or a teacher (2)? [Input the number]: '
@@ -78,7 +72,6 @@ class App
       create_person
     end
   end
-
   def create_student
     print 'Classroom: '
     student_classroom = gets.chomp
@@ -93,7 +86,6 @@ class App
     @people << student
     puts 'Student created successfully'
   end
-
   def create_teacher
     print 'Age: '
     teacher_age = gets.chomp.to_i
@@ -106,7 +98,6 @@ class App
     @people << teacher
     puts 'Teacher created successfully'
   end
-
   # Create a book method
   def create_book
     print 'Title: '
@@ -117,7 +108,6 @@ class App
     @books << book
     puts 'Book created successfully'
   end
-
   #  Create a rental method
   def display_people
     if @people.empty?
@@ -129,7 +119,6 @@ class App
     end
     nil
   end
-
   def create_rental
     if @books.empty? || (@teachers.empty? && @students.empty?)
       puts 'list are empty'
@@ -138,12 +127,10 @@ class App
       list_books
       book_number = gets.chomp.to_i
       book_name = @books[book_number]
-
       puts 'Select a person from the following list by number (not id)'
       display_people
       person_number = gets.chomp.to_i
       person_name = @people[person_number]
-
       print 'Date:'
       date = gets.chomp
       rental = Rental.new(book_name, person_name, date)
@@ -152,7 +139,6 @@ class App
     end
     nil
   end
-
   # Show list of rentals
   def list_rentals
     if @rentals.empty?
