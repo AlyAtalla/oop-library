@@ -1,42 +1,35 @@
+# main.rb
 require_relative 'app'
 
 class LibraryApp
   def initialize
     @app = App.new
+    @menu_options = {
+      1 => :list_books,
+      2 => :list_people,
+      3 => :create_person,
+      4 => :create_book,
+      5 => :create_rental,
+      6 => :list_rentals,
+      7 => :exit_app
+    }
   end
 
   def run
-    puts "Welcome to School library App!\n\n"
+    display_welcome_message
 
     loop do
       display_options
-      print 'Your option: '
       option = user_option
-
-      case option
-      when 1
-        @app.list_books
-      when 2
-        @app.list_people
-      when 3
-        @app.create_person
-      when 4
-        @app.create_book
-      when 5
-        @app.create_rental
-      when 6
-        print 'Enter person ID: '
-        person_id = gets.chomp.to_i
-        @app.list_rentals(person_id)
-      when 7
-        exit_app
-      else
-        puts 'Invalid option, please type a correct number!'
-      end
+      process_option(option)
     end
   end
 
   private
+
+  def display_welcome_message
+    puts "Welcome to School library App!\n\n"
+  end
 
   def display_options
     puts <<~OPTIONS
@@ -54,6 +47,15 @@ class LibraryApp
   def user_option
     user_choice = gets.chomp.to_i
     user_choice.between?(1, 7) ? user_choice : 'Invalid'
+  end
+
+  def process_option(option)
+    action = @menu_options[option]
+    if action
+      @app.send(action)
+    else
+      puts 'Invalid option, please type a correct number!'
+    end
   end
 
   def exit_app
