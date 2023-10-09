@@ -1,52 +1,67 @@
-require './app'
+# main.rb
+require_relative 'app'
 
-def display_options
-  'Please choose an option by entering a number:
-  1 - List of all books
-  2 - List of all people
-  3 - Add a person
-  4 - Create a book
-  5 - Add a rental
-  6 - List of all rental for given id
-  7 - Exit'
-end
+class LibraryApp
+  def initialize
+    @app = App.new
+    @menu_options = {
+      1 => :list_books,
+      2 => :list_people,
+      3 => :create_person,
+      4 => :create_book,
+      5 => :create_rental,
+      6 => :list_rentals,
+      7 => :exit_app
+    }
+  end
 
-def user_option
-  user_choice = gets.chomp.to_i
-  user_choice.positive? && user_choice <= 7 ? user_choice : 'Invalid'
-end
+  def run
+    display_welcome_message
 
-def available_options(user_choice, library)
-  case user_choice
-  when 1
-    library.list_books
-  when 2
-    library.list_people
-  when 3
-    library.create_person
-  when 4
-    library.create_book
-  when 5
-    library.create_rental
-  when 6
-    library.list_rentals
-  else
-    puts 'Thank you for using this app!\\n'
+    loop do
+      display_options
+      option = user_option
+      process_option(option)
+    end
+  end
+
+  private
+
+  def display_welcome_message
+    puts "Welcome to School library App!\n\n"
+  end
+
+  def display_options
+    puts <<~OPTIONS
+      Please choose an option by entering a number:
+      1 - List of all books
+      2 - List of all people
+      3 - Add a person
+      4 - Create a book
+      5 - Add a rental
+      6 - List of all rental for given id
+      7 - Exit
+    OPTIONS
+  end
+
+  def user_option
+    user_choice = gets.chomp.to_i
+    user_choice.between?(1, 7) ? user_choice : 'Invalid'
+  end
+
+  def process_option(option)
+    action = @menu_options[option]
+    if action
+      @app.send(action)
+    else
+      puts 'Invalid option, please type a correct number!'
+    end
+  end
+
+  def exit_app
+    puts 'Thank you for using this app!'
     exit
   end
 end
 
-def main
-  library = App.new
-
-  puts "Welcome to School library App!\n\n"
-
-  loop do
-    puts display_options
-    print 'Your option: '
-    option = user_option
-    puts option == 'Invalid' ? 'Invalid option, please type correct number!' : available_options(option, library)
-  end
-end
-
-main
+LibraryApp.new.run

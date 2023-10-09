@@ -4,7 +4,6 @@ require './student'
 require './classroom'
 require './rental'
 require './teacher'
-
 class App
   def initialize
     @books = []
@@ -138,12 +137,10 @@ class App
       list_books
       book_number = gets.chomp.to_i
       book_name = @books[book_number]
-
       puts 'Select a person from the following list by number (not id)'
       display_people
       person_number = gets.chomp.to_i
       person_name = @people[person_number]
-
       print 'Date:'
       date = gets.chomp
       rental = Rental.new(book_name, person_name, date)
