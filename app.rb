@@ -5,17 +5,8 @@ require_relative 'teacher'
 require_relative 'rental'
 require 'json'
 
-class App
-  def initialize
-    @books = []
-    @students = []
-    @teachers = []
-    @people = []
-    @rentals = []
-
-    load_data # Load data when the app starts
-  end
-
+# Module for managing books
+module BookManagement
   def list_books
     if @books.empty?
       puts 'No books found.'
@@ -26,6 +17,27 @@ class App
     end
   end
 
+  def create_book
+    print 'Title: '
+    book_title = gets.chomp
+    print 'Author: '
+    book_author = gets.chomp
+    book = Book.new(book_title, book_author)
+    @books << book
+    puts 'Book created successfully'
+  end
+
+  def save_books
+    save_to_json('books.json', @books)
+  end
+
+  def load_books
+    load_from_json('books.json', @books)
+  end
+end
+
+# Module for managing people (students and teachers)
+module PeopleManagement
   def list_people
     print 'Do you want to create a list of students (1) or teachers (2)? [Input the number]: '
     list_person = gets.chomp.to_i
@@ -36,28 +48,6 @@ class App
       list_teacher
     else
       puts "\nInvalid input!!\n\n"
-    end
-  end
-
-  def list_student
-    if @students.empty?
-      puts 'No students found.'
-    else
-      @students.each_with_index do |student, index|
-        puts "#{index}) [#{student.class}] ID: #{student.id}, Name: #{student.name},
-         Age: #{student.age}, Classroom: #{student.classroom}"
-      end
-    end
-  end
-
-  def list_teacher
-    if @teachers.empty?
-      puts 'No teachers found.'
-    else
-      @teachers.each_with_index do |teacher, index|
-        puts "#{index}) [#{teacher.class}] ID: #{teacher.id}, Name: #{teacher.name},
-         Age: #{teacher.age}, Specialization: #{teacher.specialization}"
-      end
     end
   end
 
@@ -75,44 +65,6 @@ class App
     end
   end
 
-  def create_student
-    print 'Classroom: '
-    student_classroom = gets.chomp
-    print 'Age: '
-    student_age = gets.chomp.to_i
-    print 'Name: '
-    student_name = gets.chomp
-    print 'Has parent permission? [Y/N]: '
-    parent_permission = gets.chomp
-    student = Student.new(student_classroom, student_age, student_name, parent_permission: parent_permission)
-    @students << student
-    @people << student
-    puts 'Student created successfully'
-  end
-
-  def create_teacher
-    print 'Age: '
-    teacher_age = gets.chomp.to_i
-    print 'Name: '
-    teacher_name = gets.chomp
-    print 'Specialization: '
-    teacher_specialization = gets.chomp
-    teacher = Teacher.new(teacher_specialization, teacher_age, teacher_name)
-    @teachers << teacher
-    @people << teacher
-    puts 'Teacher created successfully'
-  end
-
-  def create_book
-    print 'Title: '
-    book_title = gets.chomp
-    print 'Author: '
-    book_author = gets.chomp
-    book = Book.new(book_title, book_author)
-    @books << book
-    puts 'Book created successfully'
-  end
-
   def display_people(people)
     if people.empty?
       puts 'No people found.'
@@ -123,6 +75,17 @@ class App
     end
   end
 
+  def save_people
+    save_to_json('people.json', @people)
+  end
+
+  def load_people
+    load_from_json('people.json', @people)
+  end
+end
+
+# Module for managing rentals
+module RentalManagement
   def create_rental
     if @books.empty? || (@teachers.empty? && @students.empty?)
       puts 'Lists are empty'
@@ -155,26 +118,45 @@ class App
     end
   end
 
-  def save_data
-    save_to_json('books.json', @books)
-    save_to_json('students.json', @students)
-    save_to_json('teachers.json', @teachers)
-    save_to_json('people.json', @people)
+  def save_rentals
     save_to_json('rentals.json', @rentals)
+  end
+
+  def load_rentals
+    load_from_json('rentals.json', @rentals)
+  end
+end
+
+class Library
+  include BookManagement
+  include PeopleManagement
+  include RentalManagement
+
+  def initialize
+    @books = []
+    @students = []
+    @teachers = []
+    @people = []
+    @rentals = []
+    load_data
+  end
+
+  def save_data
+    save_books
+    save_people
+    save_rentals
+  end
+
+  def load_data
+    load_books
+    load_people
+    load_rentals
   end
 
   def save_to_json(filename, data)
     File.open(filename, 'w') do |file|
       file.puts JSON.generate(data)
     end
-  end
-
-  def load_data
-    load_from_json('books.json', @books)
-    load_from_json('students.json', @students)
-    load_from_json('teachers.json', @teachers)
-    load_from_json('people.json', @people)
-    load_from_json('rentals.json', @rentals)
   end
 
   def load_from_json(filename, target_array)
@@ -185,10 +167,71 @@ class App
       target_array.replace(data)
     end
   end
+end
 
-  def exit_app
-    save_data # Save data when the app exits
-    puts 'Thank you for using this app!'
-    exit
+class App
+  def initialize
+    @library = Library.new
+    @user_interface = UserInterface.new(@library)
+  end
+
+  def run
+    puts "Welcome to School library App!\n\n"
+
+    loop do
+      @user_interface.display_options
+      print 'Your option: '
+      option = @user_interface.user_option
+      @user_interface.process_option(option)
+    end
   end
 end
+
+class UserInterface
+  def initialize(library)
+    @library = library
+  end
+
+  def display_options
+    puts 'Please choose an option by entering a number:'
+    puts '1 - List of all books'
+    puts '2 - List of all people'
+    puts '3 - Add a person'
+    puts '4 - Create a book'
+    puts '5 - Add a rental'
+    puts '6 - List of all rental for a given ID'
+    puts '7 - Exit'
+  end
+
+  def user_option
+    user_choice = gets.chomp.to_i
+    user_choice.positive? && user_choice <= 7 ? user_choice : 'Invalid'
+  end
+
+  def process_option(option)
+    case option
+    when 1
+      @library.list_books
+    when 2
+      @library.list_people
+    when 3
+      @library.create_person
+    when 4
+      @library.create_book
+    when 5
+      @library.create_rental
+    when 6
+      print 'ID of person: '
+      person_id = gets.chomp.to_i
+      @library.list_rentals(person_id)
+    else
+      @library.save_data # Save data when the app exits
+      puts 'Thank you for using this app!'
+      exit
+    end
+  end
+end
+
+# Main program execution
+app = App.new
+app.run
