@@ -154,6 +154,7 @@ class App
       end
     end
   end
+
   def save_data
     save_to_json('books.json', @books)
     save_to_json('students.json', @students)
@@ -161,11 +162,13 @@ class App
     save_to_json('people.json', @people)
     save_to_json('rentals.json', @rentals)
   end
+
   def save_to_json(filename, data)
     File.open(filename, 'w') do |file|
       file.puts JSON.generate(data)
     end
   end
+
   def load_data
     load_from_json('books.json', @books)
     load_from_json('students.json', @students)
@@ -173,13 +176,16 @@ class App
     load_from_json('people.json', @people)
     load_from_json('rentals.json', @rentals)
   end
+
   def load_from_json(filename, target_array)
     return unless File.exist?(filename)
+
     File.open(filename, 'r') do |file|
       data = JSON.parse(file.read)
       target_array.replace(data)
     end
   end
+
   def exit_app
     save_data # Save data when the app exits
     puts 'Thank you for using this app!'
