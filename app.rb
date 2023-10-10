@@ -143,4 +143,46 @@ class App
     end
   end
 
-  
+  def list_rentals(person_id)
+    if @rentals.empty?
+      puts 'No rentals found.'
+    else
+      @rentals.each do |rental|
+        if rental.person.id == person_id
+          puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
+        end
+      end
+    end
+  end
+  def save_data
+    save_to_json('books.json', @books)
+    save_to_json('students.json', @students)
+    save_to_json('teachers.json', @teachers)
+    save_to_json('people.json', @people)
+    save_to_json('rentals.json', @rentals)
+  end
+  def save_to_json(filename, data)
+    File.open(filename, 'w') do |file|
+      file.puts JSON.generate(data)
+    end
+  end
+  def load_data
+    load_from_json('books.json', @books)
+    load_from_json('students.json', @students)
+    load_from_json('teachers.json', @teachers)
+    load_from_json('people.json', @people)
+    load_from_json('rentals.json', @rentals)
+  end
+  def load_from_json(filename, target_array)
+    return unless File.exist?(filename)
+    File.open(filename, 'r') do |file|
+      data = JSON.parse(file.read)
+      target_array.replace(data)
+    end
+  end
+  def exit_app
+    save_data # Save data when the app exits
+    puts 'Thank you for using this app!'
+    exit
+  end
+end
