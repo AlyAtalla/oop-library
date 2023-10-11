@@ -1,9 +1,9 @@
 class Solver
-  def self.factorial(n)
-    raise ArgumentError, 'Factorial is not defined for negative numbers' if n.negative?
+  def self.factorial(number)
+    raise ArgumentError, 'Factorial is not defined for negative numbers' if number.negative?
 
     result = 1
-    (1..n).each { |i| result *= i }
+    (1..number).each { |i| result *= i }
     result
   end
 
@@ -11,15 +11,15 @@ class Solver
     word.reverse
   end
 
-  def self.fizzbuzz(n)
-    if (n % 3).zero? && (n % 5).zero?
+  def self.fizzbuzz(number)
+    if (number % 3).zero? && (number % 5).zero?
       'fizzbuzz'
-    elsif (n % 3).zero?
+    elsif (number % 3).zero?
       'fizz'
-    elsif (n % 5).zero?
+    elsif (number % 5).zero?
       'buzz'
     else
-      n.to_s
+      number.to_s
     end
   end
 end
