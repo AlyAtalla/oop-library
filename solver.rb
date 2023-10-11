@@ -1,21 +1,22 @@
 class Solver
   def self.factorial(n)
-    if n < 0
-      raise ArgumentError, 'Factorial is not defined for negative numbers'
-    end
+    raise ArgumentError, 'Factorial is not defined for negative numbers' if n.negative?
+
     result = 1
     (1..n).each { |i| result *= i }
     result
   end
+
   def self.reverse(word)
     word.reverse
   end
+
   def self.fizzbuzz(n)
-    if n % 3 == 0 && n % 5 == 0
+    if (n % 3).zero? && (n % 5).zero?
       'fizzbuzz'
-    elsif n % 3 == 0
+    elsif (n % 3).zero?
       'fizz'
-    elsif n % 5 == 0
+    elsif (n % 5).zero?
       'buzz'
     else
       n.to_s
